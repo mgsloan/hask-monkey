@@ -78,7 +78,7 @@ main = do
       (Right t) -> checkConstraints t
 
   putStrLn ""
-  putStrLn "Results of speculation:"
+  putStrLn "Results of speculation:\n"
 
   let process exprs = mapM (\i@(_,e) -> (e,) <$> getType i)
                     . map (\[(le, lt), (re, rt)] -> ((lt, rt), "(" ++ le ++ ") (" ++ re ++ ")"))
@@ -86,7 +86,7 @@ main = do
 
   results <- process seeds
 
-  mapM_ (\(e, t) -> putStrLn $ e ++ "\n  :: " ++ either id prettyPrint t) results
+  mapM_ (\(e, t) -> putStrLn $ e ++ "\n  :: " ++ either id prettyPrint t ++ "\n") results
 
   removeFile monkeyHsFile
 

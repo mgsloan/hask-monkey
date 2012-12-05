@@ -39,12 +39,17 @@ Enter expressions to speculate on
 :t 
 
 Results of speculation:
+
 ((+)) ((+))
   :: GHC.Num.Num is not implementable;
+
 ((+)) (1))
   ::   (Num a) => a -> a
+
 (1) ((+))
   ::   (Num ((a -> a -> a) -> t), Num a) => t
+
 (1) (1)
   ::   (Num (a -> t), Num a) => t
+
 ```
