@@ -1,8 +1,8 @@
 This is an early version of hask-monkey.  Hask-monkey is a tool for exploring
 which types are reachable from just using function application with a user-
 provided set of functions.  As the name "*-monkey" suggests, this is done
-quite stupidly by just repeatedly asking GHC for types.  Currently, thissearch
-only consists of one iteration.
+quite stupidly by just repeatedly asking GHC for types.  Currently, this
+search only consists of one iteration.
 
 A practical example of this would be figuring out if you can derive
 "unsafeCoerce" from a library that implements some of its functions in terms of
