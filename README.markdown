@@ -10,6 +10,7 @@ it.  In other words, attempting to see if your usage of "unsafeCoerce" was
 valid or not.  This use-case was the inspiration for this, however a good
 implementation would also be useful for type-driven code completion.
 
+
 TODO:
 
   * Improve ruling out types due to clearly uninhabited constraints
@@ -24,8 +25,8 @@ TODO:
   * Options for an upper bound on the size of the resulting types
 
 
-```
 Current output looks like:
+```
 hask-monkey, version 0.0.1
 
 Enter expressions to speculate on
@@ -38,8 +39,12 @@ Enter expressions to speculate on
 :t 
 
 Results of speculation:
-"((+)) ((+))\n :: GHC.Num.Num is not implementable; "
-"((+)) (1)\n ::   (Num a) => a -> a"
-"(1) ((+))\n ::   (Num ((a -> a -> a) -> t), Num a) => t"
-"(1) (1)\n ::   (Num (a -> t), Num a) => t"
+((+)) ((+))
+  :: GHC.Num.Num is not implementable;
+((+)) (1))
+  ::   (Num a) => a -> a
+(1) ((+))
+  ::   (Num ((a -> a -> a) -> t), Num a) => t
+(1) (1)
+  ::   (Num (a -> t), Num a) => t
 ```

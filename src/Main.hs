@@ -86,7 +86,7 @@ main = do
 
   results <- process seeds
 
-  mapM_ (\(e, t) -> print $ e ++ "\n :: " ++ either id prettyPrint t) results
+  mapM_ (\(e, t) -> putStrLn $ e ++ "\n  :: " ++ either id prettyPrint t) results
 
   removeFile monkeyHsFile
 
