@@ -90,10 +90,9 @@ main = do
 
   removeFile monkeyHsFile
 
-
 prompt :: String -> IO String
 prompt str = do
-  putStr ":t "
+  putStr str
   hFlush stdout
   getLine
 

@@ -22,18 +22,11 @@ checkConstraints = (lift =<<) . fmap concat . mapM checkCxts . universe
 
     checkInstance ts (InstanceD _ t _) = all (uncurry checkType) $ zip (tail $ deApps t) ts
 
-    checkType l r = case (head (deApps l), head (deApps r)) of
-      (ConT n, ConT n') | n == n'        -> True
-      (ConT n, VarT _)                   -> True
-      (ConT _, _)                        -> False
-      (ArrowT, ArrowT)                   -> True
-      (ArrowT, _)                        -> False
-      (ListT, ListT)                     -> True
-      (ListT, _)                         -> False
-      (TupleT _, TupleT _)               -> True
-      (UnboxedTupleT _, UnboxedTupleT _) -> True
-      (UnboxedTupleT _, _)               -> False
-      _                                  -> True
+    checkType l r = eqOrVar (head (deApps l)) (head (deApps r))
+
+    eqOrVar l r        | l == r = True
+    eqOrVar l (VarT _)          = True
+    eqOrVar l _                 = False
 
     deApps = go
       where
